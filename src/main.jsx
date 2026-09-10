@@ -13,16 +13,27 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
+import Home from "./pages/home";
+import About from "./pages/About";
+import MainLayout from "./layouts/MainLayout";
+import './index.css'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello World</div>,
+    Component: MainLayout,
+    children: [
+      {
+        index: true,
+        element: <Home />
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+    ]
   },
-  {
-    path: "/about",
-    element: <div>This is about page</div>,
-  },
+
 ]);
 
 const root = document.getElementById("root");
